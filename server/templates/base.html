@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      name="viewport"
+    />
+
+    <link
+      href="{{ url_for('static', filename='css/entireframework.min.css') }}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{ url_for('static', filename='css/style.css') }}"
+      rel="stylesheet"
+    />
+    <script src="{{ url_for('static', filename='js/loader.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery-3.6.0.min.js') }}"></script>
+
+    <title>{% block title %} {% endblock %}</title>
+  </head>
+  <body>
+    <nav class="nav" tabindex="-1" onclick="this.focus()">
+      <div class="container">
+        <a class="pagename current" href="http://192.168.1.6:8080">Smart Caregiver</a>
+        <a href="http://192.168.1.6:8080/environment_tracker">Environment Tracker</a>
+        <a href="http://192.168.1.6:8080/patient_control">Patient Control</a>
+      </div>
+    </nav>
+    <button class="btn-close btn btn-sm">×</button>
+
+    {% block content %} {% endblock %}
+  </body>
+</html>

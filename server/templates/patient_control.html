@@ -1,0 +1,111 @@
+{% extends 'base.html' %} {% block title %} Environment Tracker {% endblock %}
+{% block content %}
+
+<div class="container">
+  <h1 class="header">Smart Caregiver IoT Application</h1>
+
+  <div class="full-width center-height">
+    <div class="half-width">
+      <h2 class="subheader">Fan Control</h2>
+      <p>Modify the power/speed of the patient's fan</p>
+      <!-- <p>Current Status: {{ data['fan'] }}</p> -->
+      <br />
+      <form id="fan-form" method="post" action="/fan">
+        <ul class="list left-indentation">
+          <li class="list__item">
+            <input type="radio" class="radio-btn" name="fan" id="fan-0-opt" value="0" />
+            <label for="fan-0-opt" class="label">Off</label>
+          </li>
+          <li class="list__item">
+            <input type="radio" class="radio-btn" name="fan" id="fan-1-opt" value="1" />
+            <label for="fan-1-opt" class="label">Speed 1</label>
+          </li>
+          <li class="list__item">
+            <input type="radio" class="radio-btn" name="fan" id="fan-2-opt" value="2" />
+            <label for="fan-2-opt" class="label">Speed 2</label>
+          </li>
+          <li class="list__item">
+            <input type="radio" class="radio-btn" name="fan" id="fan-3-opt" value="3" />
+            <label for="fan-3-opt" class="label">Speed 3</label>
+          </li>
+          <li class="list__item">
+            <input type="radio" class="radio-btn" name="fan" id="fan-4-opt" value="4" />
+            <label for="fan-4-opt" class="label">Auto</label>
+          </li>
+        </ul>
+      </form>
+    </div>
+
+    <div class="half-width">
+      <h2 class="subheader">Buzzer/Light Control</h2>
+      <p>Switch off/on patient light to remind patient to take medicine</p>
+      <!-- <p>Current Status: {{ data['light'] }}</p> -->
+      <br />
+      <br />
+      <form id="light-form">
+    <ul class="list left-indentation">
+        <li class="list__item">
+            <input type="radio" class="radio-btn" name="light" id="light-1-opt" value="1" {% if data['light'] == '1' %} checked {% endif %} />
+            <label for="light-1-opt" class="label">1 seconds</label>
+        </li>
+        <li class="list__item">
+            <input type="radio" class="radio-btn" name="light" id="light-2-opt" value="2" {% if data['light'] == '2' %} checked {% endif %} />
+            <label for="light-2-opt" class="label">2 seconds</label>
+        </li>
+        <li class="list__item">
+            <input type="radio" class="radio-btn" name="light" id="light-3-opt" value="3" {% if data['light'] == '3' %} checked {% endif %} />
+            <label for="light-3-opt" class="label">3 seconds</label>
+        </li>
+        <li class="list__item">
+            <input type="radio" class="radio-btn" name="light" id="light-4-opt" value="4" {% if data['light'] == '4' %} checked {% endif %} />
+            <label for="light-4-opt" class="label">4 seconds</label>
+        </li>
+        <li class="list__item">
+            <input type="radio" class="radio-btn" name="light" id="light-5-opt" value="5" {% if data['light'] == '5' %} checked {% endif %} />
+            <label for="light-5-opt" class="label">5 seconds</label>
+        </li>
+    </ul>
+</form>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    // Send AJAX request when radio button is changed
+    $("input[type=radio][name=fan]").change(function () {
+      $.ajax({
+        type: "POST",
+        url: "/fan",
+        data: {
+          fan: $(this).val(),
+        },
+        success: function (response) {
+          console.log(response);
+        },
+        error: function (error) {
+          console.log(error);
+        },
+      });
+    });
+
+    $("input[type=radio][name=light]").change(function () {
+      $.ajax({
+        type: "POST",
+        url: "/light",
+        data: {
+          light: $(this).val(),
+        },
+        success: function (response) {
+          console.log(response);
+        },
+        error: function (error) {
+          console.log(error);
+        },
+      });
+    });
+  });
+</script>
+
+{% endblock %}

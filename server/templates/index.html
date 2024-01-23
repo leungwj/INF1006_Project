@@ -1,0 +1,64 @@
+{% extends 'base.html' %} {% block title %} Smart Caregiver {% endblock %} {%
+block content %}
+
+<div class="container">
+  <h1 class="header">Smart Caregiver IoT Application</h1>
+
+  <div class="introduction">
+    <h2 class="subheader">Abstract & Selected Topic</h2>
+    <p>HEALTHCARE - IoT related applications</p>
+    <br />
+
+    <h2 class="subheader">Problem Statement</h2>
+    <p>
+      Patients that are bedridden are largely immobile and are increasingly
+      dependent on others in their daily lives. Lack of control in their body
+      movement and their environment can negatively impact the quality of life.
+    </p>
+    <br />
+
+    <h2 class="subheader">Expected Goal, outcome and scope of the project</h2>
+    <p>
+      Smart Caregiver IOT Application aims to improve the quality of life for
+      immobile bedridden patients by providing basic environment and comfort
+      needs without requiring physical movement.
+    </p>
+    <br />
+    <ul class="left-indentation">
+      <li>
+        Controlling of domestic appliances (Lights and Fans)
+        <ul class="left-indentation">
+          <li>
+            Automatic: Based on temperature (Fans) & timing of day (Lights)
+          </li>
+          <li>Manual: Control appliances from application</li>
+        </ul>
+      </li>
+      <li>Time based reminder to take medicine with light bulb and speaker</li>
+    </ul>
+    <br />
+
+    <p>
+      <b>Raspberry Pi No. 1</b>: Server. Communicates with Raspberry Pi No. 2 to
+      receive environmental information, then sends commands to Raspberry Pi No.
+      3 to control appliances. <br /><br />
+      <b>Raspberry Pi No. 2</b>: Sensor. Detects temperature changes in the
+      environment and keeps track of the sunset/sunrise time. Sends this
+      information to Raspberry Pi No. 1. <br /><br />
+      <b>Raspberry Pi No. 3</b>: Fan and lights. Fan (speed/operation) and
+      lights(operation) are adjustable based on the commands given by Raspberry
+      Pi No. 1. Has a button to stop speaker/turn off light bulb once medicine
+      is taken. (output) <br /><br />
+      <b>Thermal Sensor</b>: Determine the temperature of the room, adjust the
+      fan power based on temperature benchmark. <br /><br />
+      <b>LED Lights, Speaker</b>: To flash and play voiceline as a reminder for
+      patients to take medicine.
+    </p>
+    <br />
+
+    <h2 class="subheader">Contributors</h2>
+    <p>Sean Chan, Sherwyn Tan, Leung Wei Jun, Elias Lim, Chow Xun Rui</p>
+  </div>
+</div>
+
+{% endblock %}

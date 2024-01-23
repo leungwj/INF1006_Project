@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block title %}
+Environment Tracker
+{% endblock %}
+{% block content %}
+
+<div class="container">
+  <h1 class="header">Smart Caregiver IoT Application</h1>
+  <h2 class="subheader">Temperature/Humidity Graph</h2>
+  <div id="environmentChart"></div>
+</div>
+
+<script>
+  google.charts.load("current", { packages: ["corechart"] });
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    // // Initialize data with
+    var initial_data = ["Time", "Temperature (°C)", "Humidity (%)"];
+
+    // // Set Options
+     var options = {
+       hAxis: { title: "Time" },
+       vAxis: { title: "Temperature/Humidity" },
+       legend: "none",
+       height: 650,
+       width: "100%",
+     };
+
+    // // Get Chart DOM
+     var chart = new google.visualization.LineChart(
+       document.getElementById("environmentChart")
+     );
+
+    // Initial Draw
+     var data = [initial_data];
+     var readings = JSON.parse('{{ data }}');
+
+     console.log(readings);
+
+     for (let i = 0; i < readings.length; i++) {
+       readings[i][0] = new Date(readings[i][0]);
+       data.push(readings[i]);
+     }
+
+
+     var chart_data = google.visualization.arrayToDataTable(data);
+     chart.draw(chart_data, options);
+
+    // // Draw chart every second
+     setInterval(function () {
+    //   // Reload every 10s
+       location.reload();
+     }, 10000);
+  }
+
+  function updateChartData(array, new_data) {
+    // Only show past 10 data
+    if (array.length > 9) {
+      array.splice(1, 1);
+    }
+    array.push(new_data);
+    return array;
+  }
+
+  // TODO Delete
+  function randomNum(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min; // multiply by 21 to get a random integer between 0 and 20 (inclusive)
+  }
+</script>
+
+{% endblock %}

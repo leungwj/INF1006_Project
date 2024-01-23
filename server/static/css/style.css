@@ -1,0 +1,143 @@
+			.hero {
+				background: #eee;
+				padding: 20px;
+				border-radius: 10px;
+				margin-top: 1em;
+			}
+
+			.hero h1 {
+				margin-top: 0;
+				margin-bottom: 0.3em;
+			}
+
+			.c4 {
+				padding: 10px;
+				box-sizing: border-box;
+			}
+
+			.c4 h3 {
+				margin-top: 0;
+			}
+
+			.c4 a {
+				margin-top: 10px;
+				display: inline-block;
+			}
+
+			.header{
+          line-height: 100px;
+			    color:  #505050;
+			}
+
+			.subheader{
+			    color:  #696969;
+          line-height: 50px;
+			}
+
+/*			nav.nav::before{
+                box-sizing: initial;
+			}
+
+		    nav.nav::after{
+                box-sizing: initial;
+			}*/
+
+/***********  For the Radio Button *********************/
+* {
+/*  box-sizing: border-box;*/
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.content-container {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+.list {
+  -webkit-box-flex: 0;
+          flex: 0 0 20rem;
+          list-style-type: none;
+}
+
+.list__item {
+  position: relative;
+}
+.list__item:hover > .label {
+  color: #21769e;
+}
+.list__item:hover > .label::before {
+  border: 0.5rem solid #21769e;
+  margin-right: 2rem;
+}
+
+.radio-btn {
+  position: absolute;
+  opacity: 0;
+  visibility: visible;
+}
+.radio-btn:checked + .label {
+  color: #21769e;
+}
+.radio-btn:checked + .label::before {
+  margin-right: 2rem;
+  border: 0.5rem solid #21769e;
+  background: #21769e;
+}
+
+.label {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  padding: 0.75rem 0;
+  color: #363636;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+}
+
+.label::before {
+  display: inline-block;
+  content: "";
+  height: 1.125rem;
+  width: 1.125rem;
+  margin-right: 0.625rem;
+  border: 0.5rem solid #2ea2d8;
+  border-radius: 50%;
+  -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+}
+
+.introduction {
+  width: 60vw;
+  margin-left: 2.5vw;
+}
+
+.left-indentation { 
+  margin-left: 50px;
+}
+
+.full-width {
+  width: 100%;
+  display: inline-flex;
+}
+
+.center-height {
+  height: 50vh;
+  margin-top: 5vh;
+}
+
+.half-width {
+  width: 50%;
+}
